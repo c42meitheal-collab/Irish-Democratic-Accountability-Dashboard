@@ -187,7 +187,7 @@ How does this enhance accountability/transparency?
 ## 🔒 **Security Contributions**
 
 ### **Security Review Process**
-1. **Private disclosure** first - email security@project.ie
+1. **Private disclosure** first - email c42meitheal@gmail.com
 2. **Vulnerability assessment** by maintainers
 3. **Fix development** in private
 4. **Coordinated disclosure** after fix
