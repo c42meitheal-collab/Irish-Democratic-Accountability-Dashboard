@@ -9,7 +9,6 @@
 
 > **Every TD. Every Property. Every Euro. Real accountability for systematic wealth extraction.**
 
-![Dashboard](https://github.com/c42meitheal-collab/Irish-Democratic-Accountability-Dashboard/blob/main/Irish%20Democratic%20Accountability%20Dashboard.jpg)
 
 ---
 
@@ -26,6 +25,8 @@
 - **Regular TDs keep**: ~65% (€170k packages)  
 - **Landlord TDs keep**: ~78% (€420k total income)
 - **System extracts 36% MORE from workers** than landlord TDs
+
+![Dashboard](https://github.com/c42meitheal-collab/Irish-Democratic-Accountability-Dashboard/blob/main/Irish%20Democratic%20Accountability%20Dashboard.jpg)
 
 ---
 
