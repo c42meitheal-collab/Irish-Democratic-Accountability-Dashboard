@@ -256,7 +256,7 @@ This tool serves democratic accountability by:
 - 📖 **Documentation**: Check our comprehensive guides
 - 🐛 **Bug Reports**: Use GitHub Issues with reproduction steps
 - 💡 **Feature Requests**: Start a GitHub Discussion
-- 🔒 **Security Issues**: Email security@project.ie (private)
+- 🔒 **Security Issues**: Email c42meitheal@gmail.com (private)
 
 ### **Community Resources**
 - **GitHub Discussions**: Project roadmap and feature planning
