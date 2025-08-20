@@ -9,7 +9,7 @@
 
 > **Every TD. Every Property. Every Euro. Real accountability for systematic wealth extraction.**
 
-![Dashboard Preview](https://via.placeholder.com/800x400/2c3e50/ffffff?text=Irish+Democratic+Accountability+Dashboard)
+![Dashboard](https://github.com/c42meitheal-collab/Irish-Democratic-Accountability-Dashboard/blob/main/Irish%20Democratic%20Accountability%20Dashboard.jpg)
 
 ---
 
