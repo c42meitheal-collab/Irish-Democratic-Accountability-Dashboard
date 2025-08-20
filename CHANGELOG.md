@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - **Critical**: Misleading percentage comparison that obscured TD wealth advantage - now shows both percentages AND absolute amounts
 - **Critical**: Dashboard now clearly shows Landlord TDs keep €219,500 vs Regular TDs €99,750 despite misleading percentages
+- **Data**: Updated Kerry constituency - removed Brendan Griffin (no longer TD), added Danny Foley (Fianna Fáil)
 - **Major**: Incorrect party affiliations in TD database (all showing as "Independent")
 - **Important**: Mobile responsiveness issues on smaller screens
 - **Minor**: Dark mode compatibility for all UI elements
