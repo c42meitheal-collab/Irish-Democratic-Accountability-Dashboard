@@ -1,0 +1,597 @@
+/**
+ * Irish Democratic Accountability Dashboard - Dark Theme
+ * Professional dark mode with accessibility and visual appeal
+ */
+
+/* Dark Theme Variables */
+:root[data-theme="dark"] {
+    --bg-primary: #0f1419;
+    --bg-secondary: #1a1e23;
+    --bg-tertiary: #252a30;
+    --bg-card: #1e2328;
+    --bg-header: linear-gradient(135deg, #1a237e 0%, #3949ab 100%);
+    
+    --text-primary: #e8eaed;
+    --text-secondary: #9aa0a6;
+    --text-muted: #5f6368;
+    --text-inverse: #202124;
+    
+    --accent-primary: #4285f4;
+    --accent-secondary: #34a853;
+    --accent-warning: #fbbc04;
+    --accent-danger: #ea4335;
+    --accent-info: #4fc3f7;
+    
+    --border-primary: #3c4043;
+    --border-secondary: #5f6368;
+    --border-accent: #4285f4;
+    
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --shadow-medium: rgba(0, 0, 0, 0.4);
+    --shadow-heavy: rgba(0, 0, 0, 0.6);
+    
+    --success: #137333;
+    --warning: #f29900;
+    --danger: #d93025;
+    --info: #1a73e8;
+}
+
+/* Global Dark Mode Styles */
+[data-theme="dark"] body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] .header {
+    background: var(--bg-header);
+    box-shadow: 0 4px 6px var(--shadow-medium);
+}
+
+[data-theme="dark"] .action-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="dark"] .action-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+/* Card Components */
+[data-theme="dark"] .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    box-shadow: 0 4px 6px var(--shadow-light);
+}
+
+[data-theme="dark"] .card-title {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .card-subtitle {
+    color: var(--text-secondary);
+}
+
+/* Form Controls */
+[data-theme="dark"] .input-group label {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .input-group input,
+[data-theme="dark"] .input-group select {
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-primary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .input-group input:focus,
+[data-theme="dark"] .input-group select:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.1);
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .input-group input::placeholder {
+    color: var(--text-muted);
+}
+
+/* Buttons */
+[data-theme="dark"] .button {
+    background: var(--accent-primary);
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .button:hover {
+    background: #3367d6;
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+}
+
+[data-theme="dark"] .button:disabled {
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+}
+
+[data-theme="dark"] .button-secondary {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-primary);
+}
+
+[data-theme="dark"] .button-secondary:hover {
+    background: var(--bg-secondary);
+    border-color: var(--border-secondary);
+}
+
+[data-theme="dark"] .button-urgent,
+[data-theme="dark"] .button-danger {
+    background: var(--accent-danger);
+}
+
+[data-theme="dark"] .button-urgent:hover,
+[data-theme="dark"] .button-danger:hover {
+    background: #c5221f;
+}
+
+[data-theme="dark"] .button-info {
+    background: var(--accent-info);
+}
+
+[data-theme="dark"] .button-info:hover {
+    background: #29b6f6;
+}
+
+/* Alert Components */
+[data-theme="dark"] .alert {
+    border-left: 4px solid;
+}
+
+[data-theme="dark"] .alert-info {
+    background: rgba(26, 115, 232, 0.1);
+    border-color: var(--info);
+    color: #8ab4f8;
+}
+
+[data-theme="dark"] .alert-success {
+    background: rgba(19, 115, 51, 0.1);
+    border-color: var(--success);
+    color: #81c995;
+}
+
+[data-theme="dark"] .alert-warning {
+    background: rgba(242, 153, 0, 0.1);
+    border-color: var(--warning);
+    color: #fdd663;
+}
+
+[data-theme="dark"] .alert-danger {
+    background: rgba(217, 48, 37, 0.1);
+    border-color: var(--danger);
+    color: #f28b82;
+}
+
+/* Resource Cards */
+[data-theme="dark"] .resource-card {
+    background: var(--bg-card);
+    border: 2px solid var(--border-primary);
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .resource-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 8px 25px var(--shadow-light);
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .resource-card h3 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .resource-card p {
+    color: var(--text-secondary);
+}
+
+/* Metric Boxes */
+[data-theme="dark"] .metric-box {
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-primary);
+}
+
+[data-theme="dark"] .metric-value {
+    color: var(--accent-primary);
+}
+
+[data-theme="dark"] .metric-label {
+    color: var(--text-secondary);
+}
+
+/* Results Container */
+[data-theme="dark"] .results-container {
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-primary);
+}
+
+/* TD Cards */
+[data-theme="dark"] .td-card {
+    background: var(--bg-card);
+    border: 2px solid var(--border-primary);
+}
+
+[data-theme="dark"] .td-card:hover {
+    box-shadow: 0 4px 12px var(--shadow-light);
+    border-color: var(--border-secondary);
+}
+
+[data-theme="dark"] .td-card-high-hypocrisy {
+    border-color: var(--accent-danger);
+    background: linear-gradient(135deg, var(--bg-card), rgba(217, 48, 37, 0.05));
+}
+
+[data-theme="dark"] .td-card-medium-hypocrisy {
+    border-color: var(--accent-warning);
+    background: linear-gradient(135deg, var(--bg-card), rgba(242, 153, 0, 0.05));
+}
+
+[data-theme="dark"] .td-card-low-hypocrisy {
+    border-color: var(--accent-info);
+    background: linear-gradient(135deg, var(--bg-card), rgba(79, 195, 247, 0.05));
+}
+
+[data-theme="dark"] .party-badge {
+    background: var(--accent-primary);
+}
+
+[data-theme="dark"] .minister-badge {
+    background: #8e44ad;
+}
+
+[data-theme="dark"] .vulnerability-badge {
+    background: var(--accent-danger);
+}
+
+[data-theme="dark"] .hypocrisy-badge.high,
+[data-theme="dark"] .consistency-score.low {
+    background: var(--accent-danger);
+    animation: pulse 2s infinite;
+}
+
+[data-theme="dark"] .hypocrisy-badge.medium,
+[data-theme="dark"] .consistency-score.medium {
+    background: var(--accent-warning);
+}
+
+[data-theme="dark"] .hypocrisy-badge.low,
+[data-theme="dark"] .consistency-score.high {
+    background: var(--accent-secondary);
+}
+
+/* Voting Records */
+[data-theme="dark"] .voting-record {
+    background: var(--bg-tertiary);
+    border-left: 4px solid var(--accent-primary);
+}
+
+[data-theme="dark"] .vote-against {
+    color: var(--accent-danger);
+}
+
+[data-theme="dark"] .vote-for {
+    color: var(--accent-secondary);
+}
+
+/* Accountability Analysis */
+[data-theme="dark"] .accountability-analysis-header h3 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .priority-tier {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+}
+
+[data-theme="dark"] .tier-count {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent-primary);
+    display: block;
+}
+
+[data-theme="dark"] .tier-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+[data-theme="dark"] .accountability-card {
+    background: var(--bg-card);
+    border: 2px solid var(--border-primary);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px 0;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .accountability-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 6px 20px var(--shadow-light);
+}
+
+[data-theme="dark"] .accountability-card.high-priority {
+    border-color: var(--accent-danger);
+    background: linear-gradient(135deg, var(--bg-card), rgba(217, 48, 37, 0.03));
+}
+
+[data-theme="dark"] .accountability-card.medium-priority {
+    border-color: var(--accent-warning);
+    background: linear-gradient(135deg, var(--bg-card), rgba(242, 153, 0, 0.03));
+}
+
+[data-theme="dark"] .accountability-metrics {
+    background: var(--bg-tertiary);
+    padding: 12px;
+    border-radius: 6px;
+    margin: 10px 0;
+}
+
+[data-theme="dark"] .metric-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .metric-row span:last-child {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Source Items */
+[data-theme="dark"] .source-item {
+    background: var(--bg-tertiary);
+    border-left: 4px solid var(--accent-primary);
+}
+
+[data-theme="dark"] .source-item h4 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .source-item small {
+    color: var(--text-secondary);
+}
+
+/* Resource Summary */
+[data-theme="dark"] .resource-summary {
+    background: rgba(26, 115, 232, 0.1);
+    border: 1px solid var(--info);
+}
+
+[data-theme="dark"] .resource-summary h4 {
+    color: #8ab4f8;
+}
+
+[data-theme="dark"] .resource-summary a {
+    color: var(--accent-info);
+}
+
+[data-theme="dark"] .resource-summary a:hover {
+    color: #29b6f6;
+}
+
+/* Legal Note */
+[data-theme="dark"] .legal-note {
+    background: rgba(242, 153, 0, 0.1);
+    border-left: 4px solid var(--warning);
+    color: #fdd663;
+}
+
+/* Footer */
+[data-theme="dark"] .footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-primary);
+}
+
+[data-theme="dark"] .footer a {
+    color: var(--accent-info);
+}
+
+[data-theme="dark"] .footer a:hover {
+    color: #29b6f6;
+}
+
+/* Modal Components */
+[data-theme="dark"] .modal-overlay {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+[data-theme="dark"] .modal-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    box-shadow: 0 20px 40px var(--shadow-heavy);
+}
+
+[data-theme="dark"] .modal-header {
+    border-bottom: 1px solid var(--border-primary);
+}
+
+[data-theme="dark"] .modal-header h3 {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .modal-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+[data-theme="dark"] .modal-close:hover {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .modal-body textarea {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    color: var(--text-primary);
+    font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+}
+
+[data-theme="dark"] .modal-body textarea:focus {
+    border-color: var(--accent-primary);
+    outline: none;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--bg-card);
+    border: 2px solid var(--border-primary);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+}
+
+.theme-toggle .icon {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+[data-theme="dark"] .theme-toggle .icon {
+    transform: rotate(180deg);
+}
+
+/* Loading States */
+[data-theme="dark"] .loading {
+    color: var(--text-secondary);
+}
+
+/* Scrollbar Styling */
+[data-theme="dark"] ::-webkit-scrollbar {
+    width: 8px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: var(--border-secondary);
+    border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* Enhanced Accessibility */
+[data-theme="dark"] .button:focus,
+[data-theme="dark"] .input-group input:focus,
+[data-theme="dark"] .input-group select:focus {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+    [data-theme="dark"] body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    [data-theme="dark"] .card {
+        background: white !important;
+        border: 1px solid #ccc !important;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    :root[data-theme="dark"] {
+        --bg-primary: #000000;
+        --bg-secondary: #111111;
+        --bg-card: #1a1a1a;
+        --text-primary: #ffffff;
+        --border-primary: #555555;
+        --accent-primary: #66b3ff;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    [data-theme="dark"] * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    [data-theme="dark"] .hypocrisy-badge.high {
+        animation: none;
+    }
+}
+
+/* Mobile Dark Mode Enhancements */
+@media (max-width: 768px) {
+    [data-theme="dark"] .card {
+        margin: 15px 0;
+        padding: 20px;
+    }
+    
+    [data-theme="dark"] .accountability-card {
+        margin: 10px 0;
+        padding: 15px;
+    }
+    
+    [data-theme="dark"] .theme-toggle {
+        top: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Focus indicators for keyboard navigation */
+[data-theme="dark"] .card:focus-within {
+    box-shadow: 0 0 0 2px var(--accent-primary);
+}
+
+[data-theme="dark"] .resource-card:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px var(--accent-primary);
+}
+
+/* Enhanced button states */
+[data-theme="dark"] .button:active {
+    transform: translateY(1px);
+}
+
+[data-theme="dark"] .button-enhanced {
+    background: linear-gradient(135deg, var(--accent-primary), #3367d6);
+    box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+}
+
+[data-theme="dark"] .status-enhanced {
+    color: var(--accent-secondary);
+    font-weight: 600;
+}

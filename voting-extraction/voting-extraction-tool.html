@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Records Extraction Tool</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .tool-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .button {
+            background: #e74c3c;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        
+        .button:hover {
+            background: #c0392b;
+        }
+        
+        .button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        .status {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .log-output {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        
+        .results-section {
+            background: #fff;
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+        
+        .hypocrite-card {
+            border: 1px solid #e74c3c;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+            background: #fdf2f2;
+        }
+        
+        .score {
+            background: #e74c3c;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .progress {
+            width: 100%;
+            background: #ecf0f1;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .progress-bar {
+            background: #e74c3c;
+            height: 8px;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        
+        .json-output {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🗳️ Voting Records Extraction Tool</h1>
+        <p>Extract landlord TD voting patterns from Oireachtas API</p>
+    </div>
+
+    <div class="tool-section">
+        <h2>🎯 Extraction Control</h2>
+        <p>Extract voting records for priority landlord TDs on key housing legislation.</p>
+        
+        <button id="start-extraction" class="button">🚀 Start Extraction</button>
+        <button id="test-api" class="button">🔍 Test API Connection</button>
+        <button id="clear-logs" class="button">🧹 Clear Logs</button>
+        
+        <div id="extraction-status" class="status" style="display: none;">
+            <strong>Status:</strong> <span id="status-text">Ready</span>
+            <div class="progress">
+                <div id="progress-bar" class="progress-bar" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tool-section">
+        <h2>📊 Extraction Log</h2>
+        <div id="log-output" class="log-output">
+Ready to extract voting records...
+
+Priority Targets:
+🎯 Vulnerable Landlord TDs (Electoral Pressure):
+- Colm Burke (FF, Cork North-Central) - 1 property, 2.3% margin
+- Sinéad Gibney (SD, Dublin Bay South) - 1 property, 0.8% margin  
+- Noel Grealish (Ind, Galway West) - 2 properties, 4.1% margin
+
+🏠 High-Profile Landlord TDs (Maximum Exposure):
+- Michael Healy-Rae (Ind, Kerry) - 27 properties
+- Robert Troy (FF, Longford-Westmeath) - 8 properties
+- Thomas Byrne (FF, Meath East) - 1 property, Minister
+- Seán Canney (Ind, Galway East) - 6 properties, Minister
+
+Click "Start Extraction" to begin...
+        </div>
+    </div>
+
+    <div class="tool-section">
+        <h2>🚨 Hypocrisy Results</h2>
+        <div id="results-section" class="results-section" style="display: none;">
+            <h3>Top Hypocrites</h3>
+            <div id="hypocrites-list"></div>
+            
+            <h3>Vulnerable Electoral Targets</h3>
+            <div id="vulnerable-targets"></div>
+            
+            <h3>Government Conflicts</h3>
+            <div id="government-conflicts"></div>
+        </div>
+    </div>
+
+    <div class="tool-section">
+        <h2>💾 Generated Data</h2>
+        <p>Copy this JSON to update <code>data/voting-records-2024.json</code></p>
+        <button id="copy-json" class="button" style="display: none;">📋 Copy JSON</button>
+        <button id="download-json" class="button" style="display: none;">💾 Download JSON</button>
+        <div id="json-output" class="json-output" style="display: none;"></div>
+    </div>
+
+    <script src="oireachtas-voting-extractor.js"></script>
+    <script>
+        class VotingExtractionUI {
+            constructor() {
+                this.logOutput = document.getElementById('log-output');
+                this.statusDiv = document.getElementById('extraction-status');
+                this.statusText = document.getElementById('status-text');
+                this.progressBar = document.getElementById('progress-bar');
+                this.resultsSection = document.getElementById('results-section');
+                this.jsonOutput = document.getElementById('json-output');
+                
+                this.setupEventListeners();
+            }
+
+            setupEventListeners() {
+                document.getElementById('start-extraction').addEventListener('click', () => this.startExtraction());
+                document.getElementById('test-api').addEventListener('click', () => this.testAPI());
+                document.getElementById('clear-logs').addEventListener('click', () => this.clearLogs());
+                document.getElementById('copy-json').addEventListener('click', () => this.copyJSON());
+                document.getElementById('download-json').addEventListener('click', () => this.downloadJSON());
+            }
+
+            log(message) {
+                const timestamp = new Date().toLocaleTimeString();
+                this.logOutput.textContent += `[${timestamp}] ${message}\n`;
+                this.logOutput.scrollTop = this.logOutput.scrollHeight;
+            }
+
+            updateStatus(status, progress = 0) {
+                this.statusText.textContent = status;
+                this.progressBar.style.width = `${progress}%`;
+                this.statusDiv.style.display = 'block';
+            }
+
+            async testAPI() {
+                this.log('🔍 Testing Oireachtas API connection...');
+                this.updateStatus('Testing API...', 10);
+                
+                try {
+                    const response = await fetch('https://api.oireachtas.ie/v1/members?chamber=dail&limit=1');
+                    
+                    if (response.ok) {
+                        this.log('✅ API connection successful');
+                        this.updateStatus('API connection verified', 100);
+                    } else {
+                        this.log(`❌ API connection failed: ${response.status}`);
+                        this.updateStatus('API connection failed', 0);
+                    }
+                } catch (error) {
+                    this.log(`❌ API connection error: ${error.message}`);
+                    this.updateStatus('API connection error', 0);
+                }
+            }
+
+            async startExtraction() {
+                const button = document.getElementById('start-extraction');
+                button.disabled = true;
+                button.textContent = '⏳ Extracting...';
+                
+                this.log('🚀 Starting systematic voting records extraction...');
+                this.updateStatus('Initializing extraction...', 5);
+                
+                try {
+                    // Override console.log to capture extractor output
+                    const originalConsoleLog = console.log;
+                    console.log = (message) => {
+                        this.log(message);
+                        originalConsoleLog(message);
+                    };
+                    
+                    const extractor = new OireachtasVotingExtractor();
+                    
+                    this.updateStatus('Extracting voting data...', 20);
+                    const result = await extractor.extractAllHousingVotes();
+                    
+                    this.updateStatus('Generating reports...', 80);
+                    const report = extractor.generateHypocrisyReport(result);
+                    
+                    // Restore console.log
+                    console.log = originalConsoleLog;
+                    
+                    this.updateStatus('Extraction complete!', 100);
+                    this.log('✅ Extraction completed successfully');
+                    
+                    this.displayResults(report);
+                    this.displayJSON(result);
+                    
+                } catch (error) {
+                    this.log(`❌ Extraction failed: ${error.message}`);
+                    this.updateStatus('Extraction failed', 0);
+                } finally {
+                    button.disabled = false;
+                    button.textContent = '🚀 Start Extraction';
+                }
+            }
+
+            displayResults(report) {
+                this.resultsSection.style.display = 'block';
+                
+                // Top hypocrites
+                const hypocritesDiv = document.getElementById('hypocrites-list');
+                hypocritesDiv.innerHTML = report.top_hypocrites.map(td => `
+                    <div class="hypocrite-card">
+                        <strong>${td.name}</strong> (${td.party}) 
+                        <span class="score">${td.hypocrisy_score}/100</span>
+                        <br>
+                        <small>${td.attack_line}</small>
+                    </div>
+                `).join('');
+                
+                // Vulnerable targets
+                const vulnerableDiv = document.getElementById('vulnerable-targets');
+                vulnerableDiv.innerHTML = report.vulnerable_targets.map(td => `
+                    <div class="hypocrite-card">
+                        <strong>🎯 ${td.name}</strong> (${td.party}) - Score: ${td.hypocrisy_score}
+                        <br><small>Electoral vulnerability makes this TD susceptible to pressure</small>
+                    </div>
+                `).join('') || '<p>No vulnerable landlord TDs found with voting records.</p>';
+                
+                // Government conflicts
+                const governmentDiv = document.getElementById('government-conflicts');
+                governmentDiv.innerHTML = report.government_conflicts.map(td => `
+                    <div class="hypocrite-card">
+                        <strong>🏛️ ${td.name}</strong> - Minister with ${td.properties} properties
+                        <br><small>Score: ${td.hypocrisy_score} - Government conflict of interest</small>
+                    </div>
+                `).join('') || '<p>No government ministers found with voting records.</p>';
+            }
+
+            displayJSON(data) {
+                const jsonOutput = document.getElementById('json-output');
+                
+                // Format for voting-records-2024.json
+                const formattedData = {
+                    metadata: {
+                        compiled_at: new Date().toISOString(),
+                        source: "Oireachtas Voting Records API + Manual Compilation",
+                        legal_basis: "Oireachtas Debates and Voting Records - Public Information",
+                        focus: "Housing and tenant protection votes",
+                        verification_status: "API_EXTRACTED"
+                    },
+                    tds: data.td_summaries,
+                    vote_categories: {
+                        housing_legislation: {
+                            description: "Votes on primary housing legislation",
+                            examples: ["Residential Tenancies Act amendments", "Planning legislation", "Social housing bills"]
+                        },
+                        tenant_protections: {
+                            description: "Votes specifically on tenant rights and protections", 
+                            examples: ["Rent control measures", "Eviction protection", "Security of tenure"]
+                        },
+                        landlord_provisions: {
+                            description: "Votes on landlord rights and property provisions",
+                            examples: ["Property tax measures", "Rental income provisions", "Vacant property measures"]
+                        }
+                    },
+                    key_housing_votes: data.votes,
+                    summary: {
+                        total_tds_with_records: Object.keys(data.td_summaries).length,
+                        total_housing_votes: data.votes.length,
+                        average_anti_tenant_votes: this.calculateAverage(data.td_summaries, 'anti_tenant_votes'),
+                        average_pro_tenant_votes: this.calculateAverage(data.td_summaries, 'pro_tenant_votes'),
+                        data_completeness: `${Math.round((Object.keys(data.td_summaries).length / 32) * 100)}%`
+                    }
+                };
+                
+                jsonOutput.textContent = JSON.stringify(formattedData, null, 2);
+                jsonOutput.style.display = 'block';
+                
+                document.getElementById('copy-json').style.display = 'inline-block';
+                document.getElementById('download-json').style.display = 'inline-block';
+                
+                this.generatedJSON = formattedData;
+            }
+
+            calculateAverage(summaries, field) {
+                const values = Object.values(summaries).map(td => td[field] || 0);
+                return values.length > 0 ? Math.round(values.reduce((a, b) => a + b, 0) / values.length * 10) / 10 : 0;
+            }
+
+            copyJSON() {
+                navigator.clipboard.writeText(JSON.stringify(this.generatedJSON, null, 2)).then(() => {
+                    this.log('📋 JSON copied to clipboard');
+                }).catch(err => {
+                    this.log(`❌ Failed to copy: ${err.message}`);
+                });
+            }
+
+            downloadJSON() {
+                const blob = new Blob([JSON.stringify(this.generatedJSON, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'voting-records-2024.json';
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                this.log('💾 JSON file downloaded');
+            }
+
+            clearLogs() {
+                this.logOutput.textContent = 'Logs cleared...\n';
+                this.statusDiv.style.display = 'none';
+                this.resultsSection.style.display = 'none';
+                this.jsonOutput.style.display = 'none';
+                document.getElementById('copy-json').style.display = 'none';
+                document.getElementById('download-json').style.display = 'none';
+            }
+        }
+
+        // Initialize the UI
+        const ui = new VotingExtractionUI();
+    </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+{
+  "name": "irish-democratic-accountability-dashboard",
+  "version": "2.0.0",
+  "description": "Complete Political Transparency Platform Exposing TD Property Ownership & Financial Inequality",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "start": "python -m http.server 8080 || python3 -m http.server 8080",
+    "serve": "npx serve . -l 8080",
+    "validate": "node scripts/validate-data.js",
+    "verify": "node scripts/verify-checksums.js",
+    "generate-checksums": "node scripts/verify-checksums.js --generate",
+    "test": "npm run validate && npm run verify",
+    "deploy:github": "bash scripts/deploy-github.sh",
+    "deploy:github:win": "scripts\\deploy-github.bat",
+    "build": "echo 'Static site - no build required' && npm run test",
+    "lint": "echo 'Linting JavaScript files...' && find . -name '*.js' -not -path './node_modules/*' -exec node -c {} \\;",
+    "audit": "npm audit --audit-level moderate",
+    "security": "npm run audit && npm run verify",
+    "accessibility": "pa11y http://localhost:8080 --standard WCAG2AA || echo 'Install pa11y: npm install -g @pa11y/cli'",
+    "lighthouse": "lhci autorun --collect.url=http://localhost:8080 || echo 'Install lighthouse: npm install -g @lhci/cli'",
+    "docker:build": "docker build -t irish-accountability-dashboard .",
+    "docker:run": "docker run -d -p 80:80 irish-accountability-dashboard",
+    "docker:stop": "docker stop $(docker ps -q --filter ancestor=irish-accountability-dashboard)",
+    "update:td-data": "echo 'Please update complete-td-database.json manually from official Oireachtas sources'",
+    "update:property-data": "echo 'Please update data/property-data.json from Register of Members Interests'",
+    "verify:data": "npm run validate && npm run verify && echo 'Data verification complete'",
+    "format": "echo 'Formatting JSON files...' && find . -name '*.json' -not -path './node_modules/*' -exec sh -c 'python -m json.tool \"$1\" > \"$1.tmp\" && mv \"$1.tmp\" \"$1\"' _ {} \\;",
+    "check:links": "echo 'Checking for broken links...' && grep -r 'href=' *.html || true",
+    "minify": "echo 'Minifying CSS and JS for production...' && npx terser *.js --compress --mangle -o dist/app.min.js && npx cssnano *.css --output dist/styles.min.css",
+    "stats": "echo 'Project Statistics:' && echo 'HTML files:' && find . -name '*.html' | wc -l && echo 'JS files:' && find . -name '*.js' -not -path './node_modules/*' | wc -l && echo 'JSON files:' && find . -name '*.json' -not -path './node_modules/*' | wc -l"
+  },
+  "keywords": [
+    "irish-politics",
+    "democratic-accountability",
+    "transparency",
+    "property-ownership",
+    "td-database",
+    "housing-crisis",
+    "political-accountability",
+    "ireland",
+    "oireachtas",
+    "register-of-interests",
+    "landlord-tds",
+    "wealth-extraction",
+    "political-transparency",
+    "civic-engagement",
+    "voter-information"
+  ],
+  "author": {
+    "name": "Irish Democratic Accountability Project",
+    "email": "contact@project.ie",
+    "url": "https://github.com/yourusername/irish-democratic-accountability-dashboard"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/irish-democratic-accountability-dashboard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/irish-democratic-accountability-dashboard/issues"
+  },
+  "homepage": "https://yourusername.github.io/irish-democratic-accountability-dashboard/",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "devDependencies": {
+    "terser": "^5.24.0",
+    "cssnano": "^6.0.2",
+    "@pa11y/cli": "^3.0.0",
+    "@lhci/cli": "^0.12.0"
+  },
+  "optionalDependencies": {
+    "serve": "^14.2.1"
+  },
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/irish-democratic-accountability"
+  },
+  "files": [
+    "index.html",
+    "*.js",
+    "*.css",
+    "*.json",
+    "data/",
+    "scripts/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "directories": {
+    "data": "./data",
+    "scripts": "./scripts"
+  },
+  "config": {
+    "port": "8080"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "cpu": [
+    "x64",
+    "arm64"
+  ],
+  "preferGlobal": false,
+  "private": false,
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "workspaces": {
+    "packages": []
+  },
+  "peerDependencies": {},
+  "bundleDependencies": [],
+  "extensionDependencies": [],
+  "metadata": {
+    "project": {
+      "name": "Irish Democratic Accountability Dashboard",
+      "description": "Exposing systematic wealth extraction by political representatives",
+      "mission": "Democratic accountability through transparency",
+      "target": "Irish voters, journalists, activists, researchers",
+      "coverage": "174 TDs, 32 counties, complete property database",
+      "legal_basis": "Ethics in Public Office Act 1995, transparency laws",
+      "data_sources": "Official Oireachtas registers, CSO statistics",
+      "update_frequency": "Quarterly (Register updates), Monthly (statistics)"
+    },
+    "features": {
+      "td_finance_calculator": "Compare income between workers and TDs",
+      "property_database": "Complete TD property ownership tracking",
+      "accountability_analysis": "Electoral vulnerability for strategic engagement",
+      "td_finder": "Locate representatives and their conflicts",
+      "voting_records": "Housing policy voting patterns",
+      "data_export": "CSV and JSON download capabilities"
+    },
+    "technical": {
+      "architecture": "Static site, no backend required",
+      "security": "Zero data collection, tamper-resistant calculations",
+      "performance": "Optimized for mobile, works offline",
+      "accessibility": "WCAG 2.1 AA compliant",
+      "deployment": "GitHub Pages, Netlify, Docker ready",
+      "compatibility": "All modern browsers, mobile responsive"
+    },
+    "impact": {
+      "democratic_value": "Exposes conflicts of interest in housing policy",
+      "transparency_impact": "Public access to TD property information",
+      "accountability_mechanism": "Electoral pressure on property-owning TDs",
+      "research_value": "Academic and journalistic analysis platform",
+      "civic_engagement": "Informed voting through TD transparency",
+      "international_template": "Adaptable for other democracies"
+    }
+  }
+}

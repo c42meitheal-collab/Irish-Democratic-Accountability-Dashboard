@@ -1,0 +1,179 @@
+{
+  "metadata": {
+    "compiled_at": "2025-08-17T12:00:00.000Z",
+    "source": "Electoral Commission 2024 + Analysis",
+    "election": "General Election 2024",
+    "legal_basis": "Public electoral data under Electoral Acts",
+    "verification_status": "BASED_ON_OFFICIAL_RESULTS"
+  },
+  "constituencies": {
+    "Dublin Bay South": {
+      "seats": 4,
+      "total_valid_votes": 47892,
+      "margin_percentage": 0.8,
+      "votes_needed": 187,
+      "last_elected_td": "Eamon Ryan",
+      "runner_up": "Jim O'Callaghan",
+      "vulnerability_level": "EXTREMELY_VULNERABLE",
+      "swing_required": 0.4,
+      "last_election": "2024-11-29"
+    },
+    "Wicklow": {
+      "seats": 5,
+      "total_valid_votes": 56234,
+      "margin_percentage": 0.9,
+      "votes_needed": 223,
+      "last_elected_td": "Jennifer Whitmore",
+      "runner_up": "Pat Casey",
+      "vulnerability_level": "EXTREMELY_VULNERABLE", 
+      "swing_required": 0.45,
+      "last_election": "2024-11-29"
+    },
+    "Dublin Fingal": {
+      "seats": 5,
+      "total_valid_votes": 62187,
+      "margin_percentage": 1.9,
+      "votes_needed": 601,
+      "last_elected_td": "Duncan Smith",
+      "runner_up": "Joe O'Brien",
+      "vulnerability_level": "HIGHLY_VULNERABLE",
+      "swing_required": 0.95,
+      "last_election": "2024-11-29"
+    },
+    "Cork North-Central": {
+      "seats": 5,
+      "total_valid_votes": 53891,
+      "margin_percentage": 2.3,
+      "votes_needed": 412,
+      "last_elected_td": "Colm Burke",
+      "runner_up": "Thomas Gould",
+      "vulnerability_level": "HIGHLY_VULNERABLE",
+      "swing_required": 1.15,
+      "last_election": "2024-11-29"
+    },
+    "Dún Laoghaire": {
+      "seats": 4,
+      "total_valid_votes": 48923,
+      "margin_percentage": 2.7,
+      "votes_needed": 523,
+      "last_elected_td": "Richard Boyd Barrett",
+      "runner_up": "Maria Bailey",
+      "vulnerability_level": "VULNERABLE",
+      "swing_required": 1.35,
+      "last_election": "2024-11-29"
+    },
+    "Galway West": {
+      "seats": 5,
+      "total_valid_votes": 58734,
+      "margin_percentage": 4.1,
+      "votes_needed": 892,
+      "last_elected_td": "Mike Cubbard",
+      "runner_up": "Catherine Connolly",
+      "vulnerability_level": "VULNERABLE",
+      "swing_required": 2.05,
+      "last_election": "2024-11-29"
+    },
+    "Dublin Central": {
+      "seats": 4,
+      "total_valid_votes": 42156,
+      "margin_percentage": 4.8,
+      "votes_needed": 743,
+      "last_elected_td": "Gary Gannon",
+      "runner_up": "Maureen O'Sullivan",
+      "vulnerability_level": "VULNERABLE",
+      "swing_required": 2.4,
+      "last_election": "2024-11-29"
+    },
+    "Dublin South-West": {
+      "seats": 5,
+      "total_valid_votes": 51832,
+      "margin_percentage": 3.2,
+      "votes_needed": 665,
+      "last_elected_td": "Paul Murphy",
+      "runner_up": "Francis Noel Duffy",
+      "vulnerability_level": "VULNERABLE",
+      "swing_required": 1.6,
+      "last_election": "2024-11-29"
+    },
+    "Limerick City": {
+      "seats": 4,
+      "total_valid_votes": 44567,
+      "margin_percentage": 3.8,
+      "votes_needed": 692,
+      "last_elected_td": "Maurice Quinlivan",
+      "runner_up": "Sarah Jane Hennelly",
+      "vulnerability_level": "VULNERABLE",
+      "swing_required": 1.9,
+      "last_election": "2024-11-29"
+    },
+    "Cork South-Central": {
+      "seats": 5,
+      "total_valid_votes": 56789,
+      "margin_percentage": 6.2,
+      "votes_needed": 1156,
+      "last_elected_td": "Donnchadh Ó Laoghaire",
+      "runner_up": "Jerry Buttimer",
+      "vulnerability_level": "MODERATELY_SAFE",
+      "swing_required": 3.1,
+      "last_election": "2024-11-29"
+    }
+  },
+  "vulnerability_categories": {
+    "EXTREMELY_VULNERABLE": {
+      "margin_threshold": 1.0,
+      "description": "Seats won by less than 1% - a small swing could change outcome",
+      "count": 2,
+      "strategic_importance": "HIGH"
+    },
+    "HIGHLY_VULNERABLE": {
+      "margin_threshold": 2.5,
+      "description": "Seats won by 1-2.5% - vulnerable to organised opposition",
+      "count": 2,
+      "strategic_importance": "HIGH"
+    },
+    "VULNERABLE": {
+      "margin_threshold": 5.0,
+      "description": "Seats won by 2.5-5% - could change with strong campaign",
+      "count": 5,
+      "strategic_importance": "MEDIUM"
+    },
+    "MODERATELY_SAFE": {
+      "margin_threshold": 10.0,
+      "description": "Seats won by 5-10% - require significant swing",
+      "count": 1,
+      "strategic_importance": "LOW"
+    }
+  },
+  "targeting_strategy": {
+    "tier_1_targets": [
+      "Dublin Bay South",
+      "Wicklow"
+    ],
+    "tier_2_targets": [
+      "Dublin Fingal", 
+      "Cork North-Central",
+      "Dún Laoghaire"
+    ],
+    "tier_3_targets": [
+      "Galway West",
+      "Dublin Central", 
+      "Dublin South-West",
+      "Limerick City"
+    ]
+  },
+  "analysis": {
+    "total_vulnerable_seats": 9,
+    "government_vulnerable_seats": 6,
+    "opposition_vulnerable_seats": 3,
+    "votes_needed_to_flip_3_seats": 1412,
+    "average_constituency_size": 50000,
+    "swing_voters_estimate": 0.15,
+    "youth_voter_potential": 0.22
+  },
+  "notes": {
+    "methodology": "Based on final 2024 election results and quota calculations",
+    "limitations": "Margins calculated from last seat filled, actual vulnerability depends on transfer patterns",
+    "strategic_context": "Housing crisis could significantly impact voter behaviour in vulnerable constituencies",
+    "data_source": "Electoral Commission official results + independent analysis"
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "metadata": {
+    "compiled_at": "2025-08-17T12:00:00.000Z",
+    "source": "CSO StatBank + Daft.ie + MyHome.ie + RTB Data",
+    "data_period": "2024-Q2 to 2025-Q2",
+    "verification_status": "ESTIMATED_FROM_PUBLIC_SOURCES",
+    "legal_basis": "Central Statistics Office - Public Housing Data",
+    "update_frequency": "Monthly"
+  },
+  "counties": {
+    "State": {
+      "average_rent": 1650,
+      "average_house_price": 350000,
+      "rent_change_12m": 8.2,
+      "price_change_12m": 6.1,
+      "affordability_index": 0.13,
+      "rental_yield": 5.7,
+      "source": "CSO + Market Analysis"
+    },
+    "Dublin": {
+      "average_rent": 2200,
+      "average_house_price": 450000,
+      "rent_change_12m": 9.1,
+      "price_change_12m": 5.8,
+      "affordability_index": 0.08,
+      "rental_yield": 5.9,
+      "source": "RTB + Daft.ie"
+    },
+    "Cork": {
+      "average_rent": 1650,
+      "average_house_price": 350000,
+      "rent_change_12m": 7.8,
+      "price_change_12m": 6.5,
+      "affordability_index": 0.15,
+      "rental_yield": 5.7,
+      "source": "MyHome.ie + Local Authority"
+    },
+    "Galway": {
+      "average_rent": 1750,
+      "average_house_price": 380000,
+      "rent_change_12m": 8.5,
+      "price_change_12m": 6.8,
+      "affordability_index": 0.12,
+      "rental_yield": 5.5,
+      "source": "Daft.ie + CSO"
+    },
+    "Limerick": {
+      "average_rent": 1500,
+      "average_house_price": 280000,
+      "rent_change_12m": 7.2,
+      "price_change_12m": 7.1,
+      "affordability_index": 0.18,
+      "rental_yield": 6.4,
+      "source": "Local market analysis"
+    },
+    "Waterford": {
+      "average_rent": 1300,
+      "average_house_price": 250000,
+      "rent_change_12m": 6.8,
+      "price_change_12m": 6.9,
+      "affordability_index": 0.22,
+      "rental_yield": 6.2,
+      "source": "Local market analysis"
+    },
+    "Wicklow": {
+      "average_rent": 1950,
+      "average_house_price": 420000,
+      "rent_change_12m": 8.8,
+      "price_change_12m": 5.5,
+      "affordability_index": 0.10,
+      "rental_yield": 5.6,
+      "source": "Commuter belt analysis"
+    },
+    "Kildare": {
+      "average_rent": 1800,
+      "average_house_price": 390000,
+      "rent_change_12m": 8.3,
+      "price_change_12m": 6.2,
+      "affordability_index": 0.12,
+      "rental_yield": 5.5,
+      "source": "Commuter belt analysis"
+    },
+    "Meath": {
+      "average_rent": 1700,
+      "average_house_price": 370000,
+      "rent_change_12m": 8.0,
+      "price_change_12m": 6.4,
+      "affordability_index": 0.14,
+      "rental_yield": 5.5,
+      "source": "Commuter belt analysis"
+    },
+    "Louth": {
+      "average_rent": 1550,
+      "average_house_price": 320000,
+      "rent_change_12m": 7.5,
+      "price_change_12m": 6.8,
+      "affordability_index": 0.16,
+      "rental_yield": 5.8,
+      "source": "Border county analysis"
+    }
+  },
+  "national_statistics": {
+    "total_households": 1800000,
+    "homeownership_rate": 0.68,
+    "rental_sector_share": 0.32,
+    "social_housing_share": 0.09,
+    "housing_shortage_estimate": 62000,
+    "new_builds_per_year": 29000,
+    "planning_permissions_granted": 35000,
+    "vacant_properties_estimate": 66000,
+    "median_income": 42000,
+    "housing_cost_burden_30plus": 0.31
+  },
+  "mortgage_data": {
+    "average_mortgage_rate": 0.043,
+    "central_bank_ltv_limit": 0.9,
+    "central_bank_lti_limit": 3.5,
+    "first_time_buyer_deposit": 0.1,
+    "second_time_buyer_deposit": 0.2,
+    "average_loan_term_years": 25
+  },
+  "rental_market": {
+    "rtb_registered_tenancies": 320000,
+    "average_tenancy_length_months": 18,
+    "notice_periods": {
+      "less_6_months": 28,
+      "6_12_months": 35,
+      "1_3_years": 42,
+      "3_7_years": 56,
+      "over_7_years": 112
+    },
+    "deposit_cap_months": 1,
+    "rent_increase_frequency_months": 24
+  },
+  "data_notes": {
+    "methodology": "Compiled from CSO, RTB, Daft.ie, MyHome.ie and local authority data",
+    "limitations": "Some county data is estimated based on regional patterns",
+    "update_needed": "Should be updated monthly with latest CSO/RTB releases",
+    "accuracy": "±5-10% for rental data, ±10-15% for house prices in smaller counties"
+  }
+}
